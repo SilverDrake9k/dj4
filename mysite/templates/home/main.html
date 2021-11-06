@@ -1,0 +1,11 @@
+
+{% extends "base_menu.html" %}
+{% block content %}
+
+<h1>Hello</h1>
+<ul>
+    <li><a href="{% url 'autos:all' %}">Autos CRUD</a></li>
+    <li><a href="{% url 'cats:all' %}">Autos CRUD</a></li>
+    <li><a href="{% url 'ads:all' %}">Ads CRUD</a></li>
+</ul>
+{% endblock %}
