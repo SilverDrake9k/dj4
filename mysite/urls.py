@@ -28,13 +28,12 @@ SITE_ROOT = os.path.join(BASE_DIR, 'site')
 
 urlpatterns = [
 
-    path('',AdListView.as_view()),
+    path('',include('ads.urls')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),  # Keep
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
     path('autos/',include('autos.urls')),
     path('cats/',include('cats.urls')),
-    path('ads/',include('ads.urls')),
 
     path('accounts/login/', views.LoginView.as_view(), name='login'),
     path('accounts/logout/', views.LogoutView.as_view(), name='logout', kwargs={'next_page':'/'}),
