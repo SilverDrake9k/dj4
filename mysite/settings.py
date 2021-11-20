@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'mysite',
     'crispy_forms',
     'django.contrib.humanize',
+    'taggit',
 ]
 
 MIDDLEWARE = [

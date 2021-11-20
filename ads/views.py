@@ -13,11 +13,14 @@ from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 from django.db.utils import IntegrityError
 
+from django.db.models import Q
+
 class AdListView(OwnerListView):
     model = Ad
     template_name ='ads/ad_list.html'
     def get(self, request) :
-        ad_list = Ad.objects.all()
+        search_value = request.GET.get('search','')
+        ad_list = Ad.objects.filter(Q(text__icontains=search_value)|Q(title__icontains=search_value))
         favorites = list()
         if request.user.is_authenticated:
             # rows = [{'id': 2}, {'id': 4} ... ]  (A list of rows)
@@ -57,6 +60,7 @@ class AdCreateView(CreateView):
         pic = form.save(commit=False)
         pic.owner = self.request.user
         pic.save()
+        form.save_m2m()
         return redirect(self.success_url)
 
 

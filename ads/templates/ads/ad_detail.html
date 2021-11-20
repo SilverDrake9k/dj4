@@ -22,7 +22,7 @@
 </div>
 {% endif %}
 <span style="float: right;">
-({{ article.updated_at|naturaltime }})
+({{ ad.updated_at|naturaltime }})
 {% if ad.owner == user %}
 <a href="{% url 'ads:ad_update' ad.id %}"><i class="fa fa-pencil"></i></a>
 <a href="{% url 'ads:ad_delete' ad.id %}"><i class="fa fa-trash"></i></a>
@@ -33,6 +33,13 @@
 {{ ad.text }}
 </p>
 <p>{{ ad.price }}</p>
+{% if ad.tags.all %}
+<p>Tags: 
+  {% for tag in ad.tags.all %}
+  <span style="border:1px grey solid; background-color: LightGreen;">{{ tag }}</span>
+  {% endfor %}
+</p>
+{% endif %}
 {% if ad.content_type %}
 <img style="float:right; max-width:50%;" src="{% url 'ads:ad_picture' ad.id %}"
     onclick="document.getElementById('overlay').style.display = 'block';">
