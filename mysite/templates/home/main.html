@@ -1,7 +1,12 @@
 
 {% extends "base_menu.html" %}
 {% block content %}
-
+<form>
+  <input type="text" placeholder="Search.." name="search"
+  {% if search %} value="{{ search }}" {% endif %}
+  >
+  <button type="submit"><i class="fa fa-search"></i></button>
+<a href="{% url 'ads:all' %}"><i class="fa fa-undo"></i></a>
 <h1>Hello</h1>
 <ul>
     <li><a href="{% url 'autos:all' %}">Autos CRUD</a></li>

@@ -19,6 +19,7 @@ from django.urls import include, path
 from django.conf.urls import url
 from django.views.static import serve
 from django.contrib.auth import views
+from ads.views import AdListView
 
 # Up two folders to serve "site" content
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +28,7 @@ SITE_ROOT = os.path.join(BASE_DIR, 'site')
 
 urlpatterns = [
 
-    path('',include('hello.urls')),
+    path('',AdListView.as_view()),
     url(r'^oauth/', include('social_django.urls', namespace='social')),  # Keep
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),

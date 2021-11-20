@@ -4,6 +4,7 @@ from django.template.response import TemplateResponse
 
 
 def main(request):
+    search = request.GET.get('serach')
     resp =TemplateResponse(request, 'home/main.html', {})
     resp.set_cookie('dj4e_cookie', '05d6a571', max_age=1000)
     return resp
